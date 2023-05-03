@@ -19,6 +19,7 @@ namespace Kafka.Example.API.Service
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            //A criacao do topico precisa ser feito manualmente ou precisa enviar uma mensagem para ser criado
             await _bus.ConsumerAsync<PersonIntegration>("Person", Person, stoppingToken);
         }
 
