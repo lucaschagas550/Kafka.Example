@@ -20,7 +20,12 @@ namespace MessageBus
             var config = new ProducerConfig
             {
                 BootstrapServers = _bootstrapserver,
-                Acks = Acks.All // Eh a opcao mais consistente porque aguarda salvar mensagem no broker, realizar a copia em outro, so depois de sincronizado retorna o sucesso
+                //SecurityProtocol = SecurityProtocol.SaslSsl,
+                //SaslMechanism = SaslMechanism.Plain,
+                //SaslUsername="lucas",
+                //SaslPassword="teste",
+                //SslEndpointIdentificationAlgorithm = SslEndpointIdentificationAlgorithm.None, //anula o certificado se o servidor estiver em outra maquina
+                Acks = Acks.All, // Eh a opcao mais consistente porque aguarda salvar mensagem no broker, realizar a copia em outro, so depois de sincronizado retorna o sucesso
             };
 
             #region produto simples utilizando o tipo Json
@@ -67,6 +72,11 @@ namespace MessageBus
                     {
                         GroupId = "grupo-curso",
                         BootstrapServers = _bootstrapserver,
+                        //SecurityProtocol = SecurityProtocol.SaslSsl,
+                        //SaslMechanism = SaslMechanism.Plain,
+                        //SaslUsername="lucas",
+                        //SaslPassword="teste",
+                        //SslEndpointIdentificationAlgorithm = SslEndpointIdentificationAlgorithm.None, //anula o certificado se o servidor estiver em outra maquina
                         EnableAutoCommit = false,
                         EnablePartitionEof = true,
                     };
