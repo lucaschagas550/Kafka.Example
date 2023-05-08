@@ -64,6 +64,7 @@ namespace MessageBus
         //Consumir um topico especifico por exemplo, PersonIntegration
         public async Task ConsumerAsync<T>(string topic, Func<T, Task> onMessage, CancellationToken cancellation) where T : IntegrationEvent
         {
+            //se não existir o topico vai acontecer um erro, deveria criar um topico antes de iniciar o consumo ou verificar se o topico existe
             _ = Task.Factory.StartNew(async () => //Start de um Thread para background
             {
                 try
